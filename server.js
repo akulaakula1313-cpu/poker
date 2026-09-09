@@ -1,5 +1,5 @@
 const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto');
-const DB=path.join(__dirname,'db.json'),PORT=3000;
+const DB=path.join(__dirname,'db.json'),PORT=process.env.PORT||3000;
 function loadDB(){try{return JSON.parse(fs.readFileSync(DB,'utf8'))}catch(e){return{users:{},tables:{},sessions:{},hands:{}}}}
 function saveDB(d){fs.writeFileSync(DB,JSON.stringify(d,null,2))}
 
@@ -913,7 +913,7 @@ function addBotToTable(t,hostUid){
 }
 
 const server=http.createServer(handleRequest);
-server.listen(PORT,()=>{
+server.listen(PORT,'0.0.0.0',()=>{
   console.log('SANI POKER running on http://localhost:'+PORT);
   setInterval(checkTimeouts,5000);
 });
