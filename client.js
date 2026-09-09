@@ -405,4 +405,13 @@ function leaveTable(){
   }
 }
 
-window.onload=init;
+if(window.location.protocol==='file:'){
+  document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0a0e17;color:#e8e8e8;font-family:sans-serif;text-align:center;padding:20px">'+
+    '<div><div style="font-size:2em;color:#d4a843;margin-bottom:20px">&#9824; SANI POKER &#9829;</div>'+
+    '<p style="font-size:1.3em;margin-bottom:10px">Cannot run from file!</p>'+
+    '<p style="color:#888;margin-bottom:10px">Open terminal and run:</p>'+
+    '<code style="background:#151c2c;padding:12px 20px;border-radius:8px;display:inline-block;color:#d4a843;font-size:1.1em">cd "C:\\Users\\\u043e\u0444\u0444\u0438\u0441\u0435\\Desktop\\poker" && node server.js</code>'+
+    '<p style="color:#888;margin-top:16px">Then open: <a href="http://localhost:3000" style="color:#d4a843">http://localhost:3000</a></p></div></div>';
+}else{
+  window.onload=init;
+}
