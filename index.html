@@ -1,35 +1,106 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Royal Hold'em • Premium Poker</title><link rel="stylesheet" href="./style.css"></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07080c">
+<title>Royal Hold'em — Premium Poker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
 <body>
+<div class="noise"></div>
 <div id="app">
-  <header><div class="brand"><span class="gem">◆</span> ROYAL HOLD'EM</div><div class="status" id="status">OFFLINE</div></header>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">♠</div>
+      <div><div class="brand-name">ROYAL HOLD'EM</div><div class="brand-sub">ПРИВАТНЫЙ ПОКЕРНЫЙ КЛУБ</div></div>
+    </div>
+    <div class="top-actions">
+      <div class="live-pill"><span></span><b id="status">OFFLINE</b></div>
+      <div class="balance-pill"><small>БАЛАНС</small><strong>10,000</strong><em>ФИШКИ</em></div>
+    </div>
+  </header>
+
   <main>
-    <section id="lobby" class="panel">
-      <div class="hero"><div class="eyebrow">TEXAS HOLD'EM • NO-LIMIT</div><h1>Premium Poker</h1><p>Server-authoritative table • secure shuffle • side pots • showdown</p></div>
+    <section id="lobby" class="lobby">
+      <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="eyebrow"><span></span>ТЕХАССКИЙ ХОЛДЕМ • БЕЗ ЛИМИТА<span></span></div>
+        <div class="crown">♛</div>
+        <h1>ROYAL <i>HOLD'EM</i></h1>
+        <p class="hero-copy">Премиальный покерный стол для серьёзной игры.</p>
+        <div class="hero-line"><span></span><b>СЕРВЕР КОНТРОЛИРУЕТ ИГРУ</b><span></span></div>
+      </div>
+
       <div class="lobby-grid">
-        <div class="card"><h3>Игрок</h3><input id="name" maxlength="20" value="Player" placeholder="Ваше имя"><button id="bot">Играть против AI</button></div>
-        <div class="card"><h3>Онлайн стол</h3><input id="code" maxlength="6" placeholder="Код комнаты"><button id="create">Создать стол</button><button class="ghost" id="join">Войти в стол</button></div>
+        <div class="glass-card player-card">
+          <div class="card-icon">♙</div>
+          <div class="card-kicker">ПРОФИЛЬ ИГРОКА</div>
+          <h3>Войти в игру</h3>
+          <label>ИМЯ ИГРОКА</label>
+          <input id="name" maxlength="20" value="Player" placeholder="Ваше имя">
+          <button id="bot" class="primary"><span>♠</span> ИГРАТЬ ПРОТИВ ИИ <b>›</b></button>
+        </div>
+
+        <div class="glass-card online-card">
+          <div class="card-icon">♣</div>
+          <div class="card-kicker">ПРИВАТНЫЙ СТОЛ</div>
+          <h3>Подключиться к игре</h3>
+          <label>КОД КОМНАТЫ</label>
+          <input id="code" maxlength="6" placeholder="ВВЕДИТЕ КОД">
+          <div class="dual-buttons">
+            <button id="create" class="primary">СОЗДАТЬ СТОЛ</button>
+            <button id="join" class="secondary">ВОЙТИ В СТОЛ</button>
+          </div>
+          <div class="secure"><span>✦</span> ЗАЩИЩЕНО • ПРОВЕРКА СЕРВЕРОМ</div>
+        </div>
+      </div>
+
+      <div class="features">
+        <div><b>♠</b><span>52 КАРТЫ<br><small>ЗАЩИЩЁННАЯ ТАСОВКА</small></span></div>
+        <div><b>◈</b><span>БЕЗ ЛИМИТА<br><small>ПОЛНЫЕ СТАВКИ</small></span></div>
+        <div><b>♜</b><span>БОКОВЫЕ БАНКИ<br><small>АВТОМАТИЧЕСКИ</small></span></div>
+        <div><b>♛</b><span>ВСКРЫТИЕ<br><small>ЛУЧШИЕ 5 ИЗ 7</small></span></div>
       </div>
     </section>
+
     <section id="table" class="hidden">
-      <div class="table-head"><div><b id="room"></b><span id="street"></span></div><button class="ghost" id="newHand">Новая раздача</button></div>
+      <div class="table-head">
+        <div class="table-title"><span class="mini-crown">♛</span><div><b id="room"></b><span id="street"></span></div></div>
+        <button class="ghost" id="newHand">НОВАЯ РАЗДАЧА <span>↻</span></button>
+      </div>
+
       <div class="poker-table">
         <div class="felt">
-          <div class="pot" id="pot">POT 0</div>
+          <div class="table-ornament top-left">♠</div><div class="table-ornament top-right">♣</div>
+          <div class="table-ring"></div>
+          <div class="pot" id="pot"><small>ОБЩИЙ БАНК</small><strong>0</strong><em>ФИШКИ</em></div>
           <div class="board" id="board"></div>
-          <div class="dealer-center">♠</div>
+          <div class="dealer-center">D</div>
           <div id="seats"></div>
           <div class="turn" id="turn"></div>
         </div>
       </div>
+
       <div class="controls">
-        <button data-action="FOLD" class="danger">Fold</button><button data-action="CHECK">Check</button><button data-action="CALL">Call</button>
-        <div class="raisebox"><input id="amount" type="number" min="100" step="50" value="200"><button data-action="BET">Bet</button><button data-action="RAISE">Raise</button><button data-action="ALL_IN" class="gold">All-In</button></div>
+        <button data-action="ПАС" class="action danger"><span>✕</span> ПАС</button>
+        <button data-action="ЧЕК" class="action"><span>✓</span> ЧЕК</button>
+        <button data-action="КОЛЛ" class="action"><span>↗</span> КОЛЛ</button>
+        <div class="raisebox">
+          <div class="amount-wrap"><span>СТАВКА</span><input id="amount" type="number" min="100" step="50" value="200"></div>
+          <button data-action="СТАВКА" class="action">СТАВКА</button>
+          <button data-action="ПОВЫСИТЬ" class="action">ПОВЫСИТЬ</button>
+          <button data-action="ALL_IN" class="action gold">ОЛЛ-ИН <span>♛</span></button>
+        </div>
       </div>
-      <div class="bottom-grid"><div class="panel"><h3>Action history</h3><div id="log" class="log"></div></div><div class="panel"><h3>Hand result</h3><div id="result">Waiting…</div></div></div>
+
+      <div class="bottom-grid">
+        <div class="panel"><div class="panel-head"><h3>ИСТОРИЯ ДЕЙСТВИЙ</h3><span>● LIVE</span></div><div id="log" class="log"></div></div>
+        <div class="panel"><div class="panel-head"><h3>РЕЗУЛЬТАТ РАЗДАЧИ</h3><span>ROYAL CLUB</span></div><div id="result">Ожидание следующей раздачи…</div></div>
+      </div>
     </section>
   </main>
-</div><script src="./app.js"></script>
-</body></html>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>

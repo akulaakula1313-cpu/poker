@@ -1,10 +1,8 @@
-SANI PREMIUM POKER V0.3.1
+SANI PREMIUM POKER V0.4.1
 
-IMPORTANT: do NOT open index.html directly.
-Use START_GAME.bat for Windows, or run:
-  npm install
-  npm test
-  npm start
-Then open http://localhost:3000
+Премиальный интерфейс полностью переведён на русский язык.
+Все файлы находятся в одной папке.
 
-All project files are in this single folder.
+Windows: дважды нажмите START_GAME.bat
+Или вручную: npm install -> npm test -> npm start
+Открыть http://localhost:3000
