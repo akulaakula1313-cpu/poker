@@ -1,0 +1,14 @@
+{
+  "name": "premium-poker-game",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Production-oriented Texas Hold'em No-Limit game shell with server-authoritative hand engine, AI, replay log and web client.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}

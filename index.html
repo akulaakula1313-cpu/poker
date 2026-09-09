@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Royal Hold'em • Premium Poker</title><link rel="stylesheet" href="./style.css"></head>
+<body>
+<div id="app">
+  <header><div class="brand"><span class="gem">◆</span> ROYAL HOLD'EM</div><div class="status" id="status">OFFLINE</div></header>
+  <main>
+    <section id="lobby" class="panel">
+      <div class="hero"><div class="eyebrow">TEXAS HOLD'EM • NO-LIMIT</div><h1>Premium Poker</h1><p>Server-authoritative table • secure shuffle • side pots • showdown</p></div>
+      <div class="lobby-grid">
+        <div class="card"><h3>Игрок</h3><input id="name" maxlength="20" value="Player" placeholder="Ваше имя"><button id="bot">Играть против AI</button></div>
+        <div class="card"><h3>Онлайн стол</h3><input id="code" maxlength="6" placeholder="Код комнаты"><button id="create">Создать стол</button><button class="ghost" id="join">Войти в стол</button></div>
+      </div>
+    </section>
+    <section id="table" class="hidden">
+      <div class="table-head"><div><b id="room"></b><span id="street"></span></div><button class="ghost" id="newHand">Новая раздача</button></div>
+      <div class="poker-table">
+        <div class="felt">
+          <div class="pot" id="pot">POT 0</div>
+          <div class="board" id="board"></div>
+          <div class="dealer-center">♠</div>
+          <div id="seats"></div>
+          <div class="turn" id="turn"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button data-action="FOLD" class="danger">Fold</button><button data-action="CHECK">Check</button><button data-action="CALL">Call</button>
+        <div class="raisebox"><input id="amount" type="number" min="100" step="50" value="200"><button data-action="BET">Bet</button><button data-action="RAISE">Raise</button><button data-action="ALL_IN" class="gold">All-In</button></div>
+      </div>
+      <div class="bottom-grid"><div class="panel"><h3>Action history</h3><div id="log" class="log"></div></div><div class="panel"><h3>Hand result</h3><div id="result">Waiting…</div></div></div>
+    </section>
+  </main>
+</div><script src="./app.js"></script>
+</body></html>
